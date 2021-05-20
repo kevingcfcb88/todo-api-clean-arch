@@ -4,6 +4,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Todos.Application.Contracts.Persistence;
+using Todos.Application.Exceptions;
 using Todos.Domain.Entities;
 
 namespace Todos.Application.Features.Users.Commands.CreateUser
@@ -21,6 +22,13 @@ namespace Todos.Application.Features.Users.Commands.CreateUser
 
         public async Task<Guid> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
+            var validator = await new CreateUserCommandValidator().ValidateAsync(request);
+
+            if (validator.Errors.Count > 0)
+            {
+                throw new ValidationException(validator);
+            }
+
             var user = _mapper.Map<User>(request);
 
             user = await _userRepository.Create(user);

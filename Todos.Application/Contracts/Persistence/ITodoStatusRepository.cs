@@ -3,7 +3,7 @@ using Todos.Domain.Entities;
 
 namespace Todos.Application.Contracts.Persistence
 {
-    public interface ITodoStatusRepository : BaseRepository<TodoStatus>
+    public interface ITodoStatusRepository : IBaseRepository<TodoStatus>
     {
     }
 }

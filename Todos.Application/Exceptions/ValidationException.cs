@@ -8,14 +8,14 @@ namespace Todos.Application.Exceptions
     public class ValidationException:ApplicationException
     {
 
-        private List<string> _exceptions { get; set; }
+        private List<string> Exceptions { get; set; }
         public ValidationException(ValidationResult validationResult)
         {
-            _exceptions = new List<string>();
+            Exceptions = new List<string>();
             
             foreach(var newException in validationResult.Errors)
             {
-                _exceptions.Add($"Exception {newException.ErrorMessage} with code {newException.ErrorCode}");
+                Exceptions.Add($"Exception {newException.ErrorMessage} with code {newException.ErrorCode}");
             }
         }
     }

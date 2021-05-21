@@ -12,10 +12,10 @@ namespace Todos.Application.Features.Users.Queries.GetAllUsers
 {
     class GetAllUsersQueryHandler : IRequestHandler<GetAllUsersQuery, List<UserListVm>>
     {
-        private readonly BaseRepository<User> _userRepository;
+        private readonly IBaseRepository<User> _userRepository;
         private readonly IMapper _mapper;
 
-        public GetAllUsersQueryHandler(BaseRepository<User> userRepository, IMapper mapper)
+        public GetAllUsersQueryHandler(IBaseRepository<User> userRepository, IMapper mapper)
         {
             this._mapper = mapper;
             this._userRepository = userRepository;

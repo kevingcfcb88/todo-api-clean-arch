@@ -23,6 +23,10 @@ namespace Todos.Application.Features.Users.Commands.CreateUser
                 .NotEmpty().WithMessage("{PropertyName} is required")
                 .NotNull().WithMessage("{PropertyName} cannot be null")
                 .MaximumLength(50).WithMessage("{PropertyName} cannot exceed 50 characters");
+
+            RuleFor(u => u.Created_by)
+                .NotEmpty().WithMessage("{PropertyName} is required")
+                .NotNull().WithMessage("{PropertyName} cannot be null");
         }
     }
 }
